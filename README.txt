@@ -11,3 +11,9 @@ Deployment: controll the pods if some of them failed it'll create a new one ALSO
 
 As i am using docker driver fo minikube I need to open the terminal to access to the service, example
     minikube service post-srv
+
+Note: important verify if minikube is running other way running
+ minikube start --driver=docker 
+
+* Load balancer: Receives the trafic from the internet and it trafic is passed to
+            the ingress controller to distribute among the pods

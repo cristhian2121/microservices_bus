@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: event-bus-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: event-bus
+  template:
+    metadata:
+      labels:
+        app: event-bus
+    spec:
+      containers:
+        - name: event-bus #*
+          image: cristhiankr/event-bus
+
+# deployment and service together
+--- # create objects into to the same yml file
+apiVersion: v1
+kind: Service
+metadata:
+  name: event-bus-srv
+spec:
+  #type: by default k8s create a ClusterIP
+  selector:
+    app: event-bus #*
+  ports:
+    - name: event-bus # only for login propose
+      protocol: TCP
+      port: 4005 # service port (revice and delivers to targetPort)
+      targetPort: 4005 # pod port
+
