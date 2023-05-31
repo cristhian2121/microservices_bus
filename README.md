@@ -37,6 +37,6 @@ production‑grade Ingress controller (daemon) that runs alongside NGINX Open So
 - `k get deployments` : return the deployments
 - `k describe deployment DEPLOYMENT_NAME` : Shows s configuration about deployment
 - `k delete deployment DEPLOYMENT_NAME` : Deployment named DEPLOYMENT_NAME is deleted
-- `k rollout restart deployment DEPLOYMENT_NAME` :
+- `k rollout restart deployment DEPLOYMENT_NAME` : restarts deployment and updates configuration
 - `kubectl apply -f file_name.yaml` : apply some kubernetes configuration
--
+- `k logs -f POD_NAME`: show pod logs

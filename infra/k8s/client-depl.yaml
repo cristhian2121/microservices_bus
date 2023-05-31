@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: posts-depl
+  name: client-depl
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: posts
+      app: client
   template:
     metadata:
       labels:
-        app: posts # selector for services
+        app: client # selector for services
     spec:
       containers:
-        - name: posts
-          image: cristhiankr/posts
+        - name: client
+          image: cristhiankr/client
           # ports:
           #   - containerPort: 4000
 
@@ -22,14 +22,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: posts-clusterip-srv
+  name: client-srv
 spec:
   #type: by default k8s create a ClusterIP
   # type: NodePort
   selector:
-    app: posts #*
+    app: client #*
   ports:
-    - name: posts # only for login propose
+    - name: client # only for login propose
       protocol: TCP
-      port: 4000 # service port (revice and delivers to targetPort)
-      targetPort: 4000 # pod port
+      port: 3000 # service port (revice and delivers to targetPort)
+      targetPort: 3000 # pod port
